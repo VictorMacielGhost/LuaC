@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "process",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "c:\\TDM-GCC-64\\bin\\gcc.exe",
+                "-std=c99",
+                "-O2",
+                "-m64",
+                "-static",
+                "-I${workspaceFolder}\\src\\vendor\\lua\\src",
+                "-o",
+                "${workspaceFolder}\\LuaRunner.exe",
+                "${workspaceFolder}\\src\\main.c",
+                "@${workspaceFolder}\\src\\lua_sources.txt",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Run LuaRunner",
+            "type": "process",
+            "command": "${workspaceFolder}\\LuaRunner.exe",
+            "args": [],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        }
+    ]
+}
